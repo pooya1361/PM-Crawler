@@ -12,30 +12,30 @@ jQuery(document).ready( function($) {
 
                         $.parseJSON(data).map(function(result) {
 
-			// Date
-			var date = new Date(result.regCloseTime);
-			var date_str = date.getDate() + '/' + (date.getMonth() + 1) + '-' +  date.getFullYear().toString().substr(2,2) + ' ' + date.getHours() + '.' + date.getMinutes();
-			$("#result").append($('<span />').addClass('date').text(date_str));
+				// Date
+				var date = new Date(result.regCloseTime);
+				var date_str = date.getDate() + '/' + (date.getMonth() + 1) + '-' +  date.getFullYear().toString().substr(2,2) + ' ' + date.getHours() + '.' + date.getMinutes();
+				$("#result").append($('<span />').addClass('date').text(date_str));
 
-			// Balls
-			var numbers = result.numbers;
-			var ball_container = $('<div></div>').addClass('ball-container');
+				// Balls
+				var numbers = result.numbers;
+				var ball_container = $('<div></div>').addClass('ball-container');
 
-			$.each(numbers, function( index, value ){
-			    num = $('<span />').addClass('ball').text(value);
-			    if (value == result.kungKenoNumber[0]) {
-				num.addClass('crown-ball')
-			    }
-			    ball_container.append(num);
-			});
-			$("#result").append(ball_container);
+				$.each(numbers, function( index, value ){
+				    num = $('<span />').addClass('ball').text(value);
+				    if (value == result.kungKenoNumber[0]) {
+					num.addClass('crown-ball')
+				    }
+				    ball_container.append(num);
+				});
+				$("#result").append(ball_container);
 
-			//Total
-			$("#result").append($('<span />').addClass('title').text('Totalt antal vinster'));
-			$("#result").append($('<span />').addClass('title-result').text(result.totalWinners));
-			$("#result").append($('<span />').addClass('title').text('Totalt antal vinster'));
-			$("#result").append($('<span />').addClass('title-result').text(result.totalPayout));
-			//console.log('sendItBack');
+				//Total
+				$("#result").append($('<span />').addClass('title').text('Totalt antal vinster'));
+				$("#result").append($('<span />').addClass('title-result').text(result.totalWinners));
+				$("#result").append($('<span />').addClass('title').text('Totalt antal vinster'));
+				$("#result").append($('<span />').addClass('title-result').text(result.totalPayout));
+				//console.log('sendItBack');
 
                         });
 	
