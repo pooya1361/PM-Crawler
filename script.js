@@ -6,22 +6,24 @@ jQuery(document).ready( function($) {
 	*/
 	
 	$.ajax({
-		url: "https://moobrag.com/scrape",
+		url: "https://moobrag.com/scrape?num=7",
 		success: function( data ) {
-			console.log($.parseJSON(data).result);
+			console.log($.parseJSON(data));
+
+                        $.parseJSON(data).map(function(result) {
 
 			// Date
-			var date = new Date($.parseJSON(data).result.regCloseTime);
+			var date = new Date(result.regCloseTime);
 			var date_str = date.getDate() + '/' + (date.getMonth() + 1) + '-' +  date.getFullYear().toString().substr(2,2) + ' ' + date.getHours() + '.' + date.getMinutes();
 			$("#result").append($('<span />').addClass('date').text(date_str));
 
 			// Balls
-			var numbers = $.parseJSON(data).result.numbers;
+			var numbers = result.numbers;
 			var ball_container = $('<div></div>').addClass('ball-container');
 
 			$.each(numbers, function( index, value ){
 			    num = $('<span />').addClass('ball').text(value);
-			    if (value == $.parseJSON(data).result.kungKenoNumber[0]) {
+			    if (value == result.kungKenoNumber[0]) {
 				num.addClass('crown-ball')
 			    }
 			    ball_container.append(num);
@@ -30,10 +32,12 @@ jQuery(document).ready( function($) {
 
 			//Total
 			$("#result").append($('<span />').addClass('title').text('Totalt antal vinster'));
-			$("#result").append($('<span />').addClass('title-result').text($.parseJSON(data).result.totalWinners));
+			$("#result").append($('<span />').addClass('title-result').text(result.totalWinners));
 			$("#result").append($('<span />').addClass('title').text('Totalt antal vinster'));
-			$("#result").append($('<span />').addClass('title-result').text($.parseJSON(data).result.totalPayout));
+			$("#result").append($('<span />').addClass('title-result').text(result.totalPayout));
 			//console.log('sendItBack');
+
+                        });
 	
 			//sendItBack('<div id="result">' + $('#result').html() + '</div>', date_str);
 		},
