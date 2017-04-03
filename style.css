@@ -46,7 +46,7 @@
     margin: 16px auto;
 }    
 
-#result {
+#result, #pm-crawler-header {
     text-align: center;
     padding: 32px 0;
     border: 1px dashed lightgrey;    

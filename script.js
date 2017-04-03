@@ -1,16 +1,15 @@
 jQuery(document).ready( function($) {
-	/*
-	$('#save').click( function() {
-		console.log($('#result').html());
-	});
-	*/
+
 	
 	$.ajax({
 		url: "https://moobrag.com/scrape?num=7",
 		success: function( data ) {
 			console.log($.parseJSON(data));
 
-                        $.parseJSON(data).map(function(result) {
+                        $.parseJSON(data).map(function(result, index) {
+
+			console.log(index);
+
 
 			// Date
 			var date = new Date(result.regCloseTime);
@@ -31,13 +30,26 @@ jQuery(document).ready( function($) {
 			$("#result").append(ball_container);
 
 			//Total
-			$("#result").append($('<span />').addClass('title').text('Totalt antal vinster'));
+			$("#result").append($('<span />').addClass('title').text('Högst vinst idag'));
 			$("#result").append($('<span />').addClass('title-result').text(result.totalWinners));
-			$("#result").append($('<span />').addClass('title').text('Totalt antal vinster'));
+			$("#result").append($('<span />').addClass('title').text('Totalt utbetalat vinstbelopp'));
 			$("#result").append($('<span />').addClass('title-result').text(result.totalPayout));
 			//console.log('sendItBack');
 
+                        if (index == 0) {
+                            
+                            $("#more-results").before(ball_container);
+
+			    $("#more-results").before($('<span />').addClass('title').text('Högst vinst idag'));
+			    $("#more-results").before($('<span />').addClass('title-result').text(result.totalWinners));
+			    $("#more-results").before($('<span />').addClass('title').text('Totalt utbetalat vinstbelopp'));
+			    $("#more-results").before($('<span />').addClass('title-result').text(result.totalPayout));
+
+                        }
+
                         });
+
+
 	
 			//sendItBack('<div id="result">' + $('#result').html() + '</div>', date_str);
 		},
