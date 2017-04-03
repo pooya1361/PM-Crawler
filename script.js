@@ -29,21 +29,12 @@ jQuery(document).ready( function($) {
 				});
 				$("#result").append(ball_container);
 
-<<<<<<< HEAD
 			//Total
 			$("#result").append($('<span />').addClass('title').text('Högst vinst idag'));
 			$("#result").append($('<span />').addClass('title-result').text(result.totalWinners));
 			$("#result").append($('<span />').addClass('title').text('Totalt utbetalat vinstbelopp'));
 			$("#result").append($('<span />').addClass('title-result').text(result.totalPayout));
 			//console.log('sendItBack');
-=======
-				//Total
-				$("#result").append($('<span />').addClass('title').text('Totalt antal vinster'));
-				$("#result").append($('<span />').addClass('title-result').text(result.totalWinners));
-				$("#result").append($('<span />').addClass('title').text('Totalt antal vinster'));
-				$("#result").append($('<span />').addClass('title-result').text(result.totalPayout));
-				//console.log('sendItBack');
->>>>>>> b1a06b7ca31ae3d61416feb8eb3146b7dd6da01b
 
                         if (index == 0) {
                             
